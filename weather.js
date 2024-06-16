@@ -1,5 +1,5 @@
 const apiKey = 'a0c669945cefe2dd4a3503600956917e';
-const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
+const baseUrl = 'http://api.openweathermap.org/data/3.0/weather';
 const city = 'Sarasota';
 
 function kelvinToCelsiusFahrenheit(kelvin) {
