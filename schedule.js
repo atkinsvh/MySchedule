@@ -11,7 +11,7 @@ const weeklySchedule = {
 function displayDailySchedule() {
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
     const dailySchedule = weeklySchedule[today];
-    document.getElementById('dailySchedule').innerText = dailySchedule.replace(/\n/g, '<br>');
+    document.getElementById('dailySchedule').innerHTML = dailySchedule.replace(/\n/g, '<br>');
 }
 
 // Display the daily schedule when the page loads
