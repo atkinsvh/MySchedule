@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Schedule Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="weather.js"></script>
 </head>
 <body>
     <header>
@@ -13,15 +14,17 @@
     <main>
         <section id="weather">
             <h2>Weather</h2>
-            <!-- Weather API content -->
+            <input type="text" id="cityInput" placeholder="Enter city">
+            <button onclick="fetchWeather()">Get Weather</button>
+            <div id="weatherDetails"></div>
         </section>
         <section id="schedule">
             <h2>Schedule</h2>
             <!-- Routine weekly schedule -->
         </section>
         <section id="google-calendar">
-            <h2>Google Calendar API</h2>
-            <!-- Google Calendar content -->
+            <h2>Google Calendar</h2>
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%238E24AA&mode=MONTH&src=MzdiZTY4YmQzOGJlYTg2OTU2NDZlNjhkNWM5M2JhMjZiMDYzY2ZjZWM1YzI5MGJjOTE4MzUyOTI2M2ZjY2QwMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23D50000" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </section>
     </main>
 </body>
