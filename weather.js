@@ -1,5 +1,6 @@
 const apiKey = 'a0c669945cefe2dd4a3503600956917e';
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
+const city = 'Sarasota';
 
 function kelvinToCelsiusFahrenheit(kelvin) {
     const celsius = kelvin - 273.15;
@@ -8,7 +9,6 @@ function kelvinToCelsiusFahrenheit(kelvin) {
 }
 
 async function fetchWeather() {
-    const city = document.getElementById('cityInput').value;
     const url = `${baseUrl}?q=${city}&appid=${apiKey}`;
     try {
         const response = await fetch(url);
@@ -37,3 +37,6 @@ async function fetchWeather() {
         document.getElementById('weatherDetails').innerHTML = '<p>Error fetching weather data. Please try again.</p>';
     }
 }
+
+// Fetch weather data when the page loads
+document.addEventListener('DOMContentLoaded', fetchWeather);
