@@ -1,39 +1,18 @@
-async function fetchSchedule() {
-    const response = await fetch('Schedule.csv');
-    const data = await response.text();
-    const schedule = parseCSV(data);
-    displayDailySchedule(schedule);
-}
+const weeklySchedule = {
+    'Monday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\n9:00 AM - 12:00 PM - Coding projects\n12:00 PM - Lunch\n1:00 PM - 5:00 PM - Coding projects\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk\nRotating Chores: Cleaning stairs',
+    'Tuesday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\n9:00 AM - 12:00 PM - Coding projects\n12:00 PM - Lunch\n1:00 PM - 5:00 PM - Coding projects\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk\nRotating Chores: Light laundry',
+    'Wednesday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\n9:00 AM - 12:00 PM - Coding projects\n12:00 PM - Lunch\n1:00 PM - 5:00 PM - Coding projects\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk\nRotating Chores: Taking out the trash',
+    'Thursday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\n9:00 AM - 12:00 PM - Coding projects\n12:00 PM - Lunch\n1:00 PM - 5:00 PM - Coding projects\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk\nRotating Chores: Cleaning stairs',
+    'Friday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\n9:00 AM - 12:00 PM - Coding projects\n12:00 PM - Lunch\n1:00 PM - 5:00 PM - Coding projects\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk\nRotating Chores: Light laundry',
+    'Saturday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\nMorning: Coding projects\nAfternoon: Chill outdoor couple activities\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk',
+    'Sunday': '7:00 AM - Wake up, stretch, and light journaling\n8:00 AM - Breakfast\nMorning: Coding projects\nAfternoon: Chill outdoor couple activities\n5:00 PM - Dog walk\n6:00 PM - Dinner\n7:00 PM - 8:00 PM - Group reading activity\n9:00 PM - Dog walk'
+};
 
-function parseCSV(data) {
-    const lines = data.split('\n');
-    const result = [];
-    const headers = lines[0].split(',');
-
-    for (let i = 1; i < lines.length; i++) {
-        const obj = {};
-        const currentline = lines[i].split(',');
-
-        for (let j = 0; j < headers.length; j++) {
-            obj[headers[j].trim()] = currentline[j].trim();
-        }
-        result.push(obj);
-    }
-    return result;
-}
-
-function displayDailySchedule(schedule) {
+function displayDailySchedule() {
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
-    const dailySchedule = schedule.filter(item => item.Day === today);
-
-    let scheduleHTML = '<ul>';
-    dailySchedule.forEach(item => {
-        scheduleHTML += `<li>${item.Time} - ${item.Activity} (${item['Individual/Group']})</li>`;
-    });
-    scheduleHTML += '</ul>';
-
-    document.getElementById('dailySchedule').innerHTML = scheduleHTML;
+    const dailySchedule = weeklySchedule[today];
+    document.getElementById('dailySchedule').innerHTML = dailySchedule.replace(/\n/g, '<br>');
 }
 
-// Fetch and display the schedule when the page loads
-document.addEventListener('DOMContentLoaded', fetchSchedule);
+// Display the daily schedule when the page loads
+document.addEventListener('DOMContentLoaded', displayDailySchedule);
