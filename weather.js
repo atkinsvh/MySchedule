@@ -1,10 +1,9 @@
-const apiKey = 'a0c669945cefe2dd4a3503600956917e';
-const lat = '27.3364'; // Latitude for Sarasota
-const lon = '-82.5307'; // Longitude for Sarasota
+const apiKey = '4fdb4b0a059f05329be29cf7cb6ddcde'; // Replace with your actual API key
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+const city = 'Sarasota,Fl';
 
 async function fetchWeather() {
-    const url = `${baseUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    const url = `${baseUrl}?q=${city}&appid=${apiKey}&units=metric`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -16,7 +15,7 @@ async function fetchWeather() {
         const tempFahrenheit = (tempCelsius * 9/5) + 32;
         const description = data.weather[0].description;
         document.getElementById('weatherDetails').innerHTML = `
-            <p>Temperature in Sarasota: ${tempCelsius.toFixed(2)}°C or ${tempFahrenheit.toFixed(2)}°F</p>
+            <p>Temperature in ${city}: ${tempCelsius.toFixed(2)}°C or ${tempFahrenheit.toFixed(2)}°F</p>
             <p>Weather: ${description}</p>
         `;
     } catch (error) {
@@ -27,4 +26,3 @@ async function fetchWeather() {
 
 // Fetch weather data when the page loads
 document.addEventListener('DOMContentLoaded', fetchWeather);
-
