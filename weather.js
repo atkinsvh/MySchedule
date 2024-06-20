@@ -1,5 +1,5 @@
 const apiKey = 'a0c669945cefe2dd4a3503600956917e';
-const baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
+const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall';
 const lat = '27.3364'; // Latitude for Sarasota
 const lon = '-82.5307'; // Longitude for Sarasota
 
