@@ -40,7 +40,7 @@ h2 {
 
 #weatherDetails, #dailySchedule {
     white-space: pre-wrap;
-    color: #333; /* Dark text for better contrast */
+    color: white; /* Light text for better contrast */
 }
 
 @media screen and (max-width: 768px) {
