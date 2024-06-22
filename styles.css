@@ -2,14 +2,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+    background-color: #f0f0f0;
 }
 
 header {
-    background-color: #333;
     color: white;
     padding: 1rem;
     text-align: center;
+    background-color: #4CAF50; /* Changed header background for contrast */
 }
 
 main {
@@ -22,31 +22,26 @@ main {
 section {
     margin-bottom: 2rem;
     flex: 1;
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-#weather {
-    background-color: #ffebee; /* Pastel Red */
-    border: 2px solid #ffcdd2;
+    padding: 0 1rem;
+    background-color: #4CAF50; /* Green background for clear boxes */
+    border: 2px solid #ffffff; /* White border for prominence */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: white; /* White text for contrast */
 }
 
 #schedule {
-    background-color: #e3f2fd; /* Pastel Blue */
-    border: 2px solid #bbdefb;
-}
-
-#google-calendar {
-    background-color: #e8f5e9; /* Pastel Green */
-    border: 2px solid #c8e6c9;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 h2 {
-    color: #333;
+    color: white; /* White text for headings */
 }
 
 #weatherDetails, #dailySchedule {
     white-space: pre-wrap;
+    color: white; /* White text for details */
 }
 
 @media screen and (max-width: 768px) {
@@ -62,4 +57,12 @@ h2 {
     iframe {
         width: 100%;
     }
+}
+
+#googleCalendar {
+    background-color: #4CAF50; /* Green background for calendar */
+    border: 2px solid #ffffff; /* White border for prominence */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white; /* White text for calendar */
 }
