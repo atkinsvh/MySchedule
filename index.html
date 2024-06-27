@@ -7,16 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="weather.js"></script>
     <script defer src="schedule.js"></script>
+    <script defer src="quotes.js"></script>
 </head>
 <body>
     <header>
         <h1>Welcome</h1>
+        <div id="quote" class="moving-text"></div>
     </header>
     <main>
-        <section id="greeting" class="orange-box">
-            <h2>Hello, <span id="salutation"></span></h2>
-            <div id="salutationBox" class="moving-text"></div>
-        </section>
         <section id="weather" class="purple-box">
             <h2>Weather in Sarasota</h2>
             <div id="weatherDetails"></div>
@@ -32,22 +30,19 @@
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const quotes = [
+                "The only way to do great work is to love what you do. - Steve Jobs",
+                "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb",
+                "Your time is limited, don’t waste it living someone else’s life. - Steve Jobs",
+                "Not everything that is faced can be changed, but nothing can be changed until it is faced. - James Baldwin",
+                "The purpose of our lives is to be happy. - Dalai Lama",
+                "Life is what happens when you’re busy making other plans. - John Lennon",
+                "Get busy living or get busy dying. - Stephen King"
+            ];
             const now = new Date();
-            const hours = now.getHours();
-            let salutation;
-
-            if (hours < 12) {
-                salutation = 'Good Morning';
-            } else if (hours < 18) {
-                salutation = 'Good Afternoon';
-            } else {
-                salutation = 'Good Evening';
-            }
-
-            document.getElementById('salutation').textContent = salutation;
-
-            // List of monthly colors to be added later in hex code
-            // const monthlyColors = ['#FF5733', '#33FF57', '#3357FF', ...];
+            const dayIndex = now.getDay();
+            const quote = quotes[dayIndex];
+            document.getElementById('quote').textContent = quote;
         });
     </script>
 </body>
