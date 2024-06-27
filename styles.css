@@ -55,7 +55,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    position: relative;
 }
 
 .purple-box, .green-box, .orange-box {
@@ -78,6 +79,7 @@ section {
 
 section h2 {
     font-size: 2rem;
+    padding-bottom: 1rem;
 }
 
 .weather-container, .weather-icon, .temperature-value, .temperature-description, .location, #dailySchedule, iframe {
