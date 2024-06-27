@@ -38,19 +38,17 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .row {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    flex-wrap: nowrap;
 }
 
 section {
-    margin-bottom: 2rem;
     padding: 1rem;
     color: white;
     text-align: center;
@@ -58,23 +56,25 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0.5rem;
 }
 
 .purple-box {
     background-color: rgba(128, 0, 128, 0.5);
-    flex: 1 1 30%;
+    flex: 1 1 33%;
+    margin: 0.5rem;
 }
 
 .green-box {
     background-color: rgba(0, 128, 0, 0.5);
-    flex: 1 1 40%;
-    font-size: 3rem; /* Significantly larger text size for the schedule */
+    flex: 1 1 34%;
+    font-size: 2.5rem; /* Larger text size for the schedule */
+    margin: 0.5rem;
 }
 
 .orange-box {
     background-color: rgba(255, 165, 0, 0.5);
-    flex: 1 1 30%;
+    flex: 1 1 33%;
+    margin: 0.5rem;
 }
 
 .weather-container, .weather-icon, .temperature-value, .temperature-description, .location, #dailySchedule, iframe {
