@@ -133,4 +133,38 @@ section {
 }
 
 .temperature-value span {
-    color:
+    color: #293251;
+    font-size: 0.5em;
+}
+
+.temperature-description p {
+    padding: 8px;
+    margin: 0;
+    color: #293251;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.location p {
+    margin: 0;
+    padding: 0;
+    color: #293251;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        max-width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+    }
+}
+
