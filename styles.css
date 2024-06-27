@@ -6,10 +6,10 @@ body {
 }
 
 header {
+    background-color: #333;
     color: white;
     padding: 1rem;
     text-align: center;
-    background-color: #4CAF50; /* Changed header background for contrast */
 }
 
 main {
@@ -23,11 +23,6 @@ section {
     margin-bottom: 2rem;
     flex: 1;
     padding: 0 1rem;
-    background-color: #4CAF50; /* Green background for clear boxes */
-    border: 2px solid #ffffff; /* White border for prominence */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    color: white; /* White text for contrast */
 }
 
 #schedule {
@@ -36,12 +31,30 @@ section {
 }
 
 h2 {
-    color: white; /* White text for headings */
+    color: #333;
 }
 
 #weatherDetails, #dailySchedule {
     white-space: pre-wrap;
-    color: white; /* White text for details */
+}
+
+#salutationBox {
+    background-color: #ccc;
+    color: #333;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.moving-text {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% { text-indent: 100%; }
+    100% { text-indent: -100%; }
 }
 
 @media screen and (max-width: 768px) {
@@ -57,12 +70,4 @@ h2 {
     iframe {
         width: 100%;
     }
-}
-
-#googleCalendar {
-    background-color: #4CAF50; /* Green background for calendar */
-    border: 2px solid #ffffff; /* White border for prominence */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: white; /* White text for calendar */
 }
