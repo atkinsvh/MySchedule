@@ -5,7 +5,7 @@
 body {
     background-color: #293251;
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 5%;
     padding: 0;
 }
 
@@ -51,9 +51,8 @@ section {
     margin-bottom: 2rem;
     padding: 1rem;
     color: white;
-    flex: 1 1 45%;
+    flex: 1 1 100%;
     text-align: center;
-    margin: 5% 45%; /* Larger margin */
     font-size: 2rem; /* Increased font size */
     display: flex;
     flex-direction: column;
