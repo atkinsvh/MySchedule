@@ -16,6 +16,22 @@ header {
     text-align: center;
 }
 
+.banner {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 10s linear infinite;
+    background-color: #555;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+@keyframes marquee {
+    0% { text-indent: 100%; }
+    100% { text-indent: -100%; }
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -27,14 +43,14 @@ main {
     display: flex;
     width: 100%;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 section {
     margin-bottom: 2rem;
     padding: 1rem;
     color: white;
-    flex: 1;
-    max-width: 30%;
+    flex: 1 1 30%;
 }
 
 .orange-box {
@@ -47,23 +63,6 @@ section {
 
 .green-box {
     background-color: rgba(0, 128, 0, 0.5);
-}
-
-.banner {
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-    animation: marquee 10s linear infinite;
-    background-color: #555;
-    color: white;
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
-}
-
-@keyframes marquee {
-    0% { text-indent: 100%; }
-    100% { text-indent: -100%; }
 }
 
 .container {
