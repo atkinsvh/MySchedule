@@ -1,13 +1,7 @@
-const apiKey = 'a0c669945cefe2dd4a3503600956917e';
-const baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
+const apiKey = 'YOUR_API_KEY_HERE'; // Replace with your actual API key
+const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall';
 const lat = '27.3364'; // Latitude for Sarasota
 const lon = '-82.5307'; // Longitude for Sarasota
-
-function kelvinToCelsiusFahrenheit(kelvin) {
-    const celsius = kelvin - 273.15;
-    const fahrenheit = celsius * (9 / 5) + 32;
-    return { celsius, fahrenheit };
-}
 
 async function fetchWeather() {
     const url = `${baseUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
