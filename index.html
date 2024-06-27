@@ -13,6 +13,10 @@
         <h1>Welcome</h1>
     </header>
     <main>
+        <section id="greeting">
+            <h2>Hello, <span id="salutation"></span></h2>
+            <div id="salutationBox" class="moving-text"></div>
+        </section>
         <section id="weather">
             <h2>Weather in Sarasota</h2>
             <div id="weatherDetails"></div>
@@ -20,11 +24,32 @@
         <section id="schedule">
             <h2>Schedule</h2>
             <div id="dailySchedule"></div>
+            <!-- TODO: Replace with dynamic JS schedule -->
         </section>
         <section id="google-calendar">
             <h2>Google Calendar</h2>
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&src=MzdiZTY4YmQzOGJlYTg2OTU2NDZlNjhkNWM5M2JhMjZiMDYzY2ZjZWM1YzI5MGJjOTE4MzUyOTI2M2ZjY2QwMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23D50000&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const now = new Date();
+            const hours = now.getHours();
+            let salutation;
+
+            if (hours < 12) {
+                salutation = 'Good Morning';
+            } else if (hours < 18) {
+                salutation = 'Good Afternoon';
+            } else {
+                salutation = 'Good Evening';
+            }
+
+            document.getElementById('salutation').textContent = salutation;
+
+            // List of monthly colors to be added later in hex code
+            // const monthlyColors = ['#FF5733', '#33FF57', '#3357FF', ...];
+        });
+    </script>
 </body>
 </html>
