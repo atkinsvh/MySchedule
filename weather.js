@@ -1,43 +1,89 @@
-const apiKey = 'a0c669945cefe2dd4a3503600956917e';
-const baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
-const lat = '27.3364'; // Latitude for Sarasota
-const lon = '-82.5307'; // Longitude for Sarasota
+// SELECT ELEMENTS
+const iconElement = document.querySelector(".weather-icon");
+const tempElement = document.querySelector(".temperature-value p");
+const descElement = document.querySelector(".temperature-description p");
+const locationElement = document.querySelector(".location p");
+const notificationElement = document.querySelector(".notification");
 
-function kelvinToCelsiusFahrenheit(kelvin) {
-    const celsius = kelvin - 273.15;
-    const fahrenheit = celsius * (9 / 5) + 32;
-    return { celsius, fahrenheit };
+// App data
+const weather = {};
+
+weather.temperature = {
+    unit : "celsius"
 }
 
-async function fetchWeather() {
-    const url = `${baseUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const tempCelsius = data.current.temp;
-        const tempFahrenheit = (tempCelsius * 9/5) + 32;
-        const feelsLikeCelsius = data.current.feels_like;
-        const feelsLikeFahrenheit = (feelsLikeCelsius * 9/5) + 32;
-        const windSpeed = data.current.wind_speed;
-        const humidity = data.current.humidity;
-        const description = data.current.weather[0].description;
-        const sunriseTime = new Date(data.current.sunrise * 1000).toLocaleTimeString();
-        const sunsetTime = new Date(data.current.sunset * 1000).toLocaleTimeString();
+// App consts and var 
+const KELVIN = 273;    
+const key = "a0c669945cefe2dd4a3503600956917e"; // Replace with your actual API key
 
-        document.getElementById('weatherDetails').innerHTML = `
-            <p>Temperature in Sarasota: ${tempCelsius.toFixed(2)}°C or ${tempFahrenheit.toFixed(2)}°F</p>
-            <p>Feels like: ${feelsLikeCelsius.toFixed(2)}°C or ${feelsLikeFahrenheit.toFixed(2)}°F</p>
-            <p>Humidity: ${humidity}%</p>
-            <p>Wind Speed: ${windSpeed} m/s</p>
-            <p>Weather: ${description}</p>
-            <p>Sunrise: ${sunriseTime}</p>
-            <p>Sunset: ${sunsetTime}</p>
-        `;
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        document.getElementById('weatherDetails').innerHTML = '<p>Error fetching weather data. Please try again.</p>';
+// CHECK IF BROWSER SUPPORTS GEOLOCATION
+if('geolocation' in navigator){
+    navigator.geolocation.getCurrentPosition(setPosition, showError);
+}else{
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+}
+
+// SET USER'S POSITION
+function setPosition(position){
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    
+    getWeather(latitude, longitude);
+}
+
+// SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
+function showError(error){
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = `<p> ${error.message} </p>`;
+}
+
+// GET WEATHER FROM API PROVIDER
+function getWeather(latitude, longitude){
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    
+    fetch(api)
+        .then(function(response){
+            let data = response.json();
+            return data;
+        })
+        .then(function(data){
+            weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+            weather.description = data.weather[0].description;
+            weather.iconId = data.weather[0].icon;
+            weather.city = data.name;
+            weather.country = data.sys.country;
+        })
+        .then(function(){
+            displayWeather();
+        });
+}
+
+// DISPLAY WEATHER TO UI
+function displayWeather(){
+    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    descElement.innerHTML = weather.description;
+    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+}
+
+// C to F conversion
+function celsiusToFahrenheit(temperature){
+    return (temperature * 9/5) + 32;
+}
+
+// WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENT
+tempElement.addEventListener("click", function(){
+    if(weather.temperature.value === undefined) return;
+    
+    if(weather.temperature.unit == "celsius"){
+        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+        fahrenheit = Math.floor(fahrenheit);
+        
+        tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
+        weather.temperature.unit = "fahrenheit";
+    }else{
+        tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+        weather.temperature.unit = "celsius";
     }
-}
-
-// Fetch weather data when the page loads
-document.addEventListener('DOMContentLoaded', fetchWeather);
+});
