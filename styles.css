@@ -23,26 +23,19 @@ section {
     margin-bottom: 2rem;
     flex: 1;
     padding: 0 1rem;
+    color: white;
 }
 
-#schedule {
-    text-align: center;
-    font-size: 1.2rem;
+.orange-box {
+    background-color: rgba(255, 165, 0, 0.5);
 }
 
-h2 {
-    color: #333;
+.purple-box {
+    background-color: rgba(128, 0, 128, 0.5);
 }
 
-#weatherDetails, #dailySchedule {
-    white-space: pre-wrap;
-}
-
-#salutationBox {
-    background-color: #ccc;
-    color: #333;
-    padding: 1rem;
-    margin-top: 0.5rem;
+.green-box {
+    background-color: rgba(0, 128, 0, 0.5);
 }
 
 .moving-text {
