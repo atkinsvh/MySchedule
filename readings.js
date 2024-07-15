@@ -1,7 +1,6 @@
-// readings.js
-
-const csvData = `
-Day,Week,Proper,Psalms 1,Psalms 2,Old Testament,New Testament,Gospel
+document.addEventListener('DOMContentLoaded', function () {
+    const csvData = `
+Day,Week,Proper,Psalms1,Psalms2,OldTestament,NewTestament,Gospel
 Sunday,1,Proper 10,148,149,150,114,115,Joshua 1:1-18,Acts 21:3-15,Mark 1:21-27
 Monday,1,Proper 10,25,9,15,Joshua 2:1-14,Romans 11:1-12,Matthew 25:1-13
 Tuesday,1,Proper 10,26,28,36,39,Joshua 2:15-24,Romans 11:13-24,Matthew 25:14-30
@@ -23,33 +22,63 @@ Wednesday,3,Proper 12,119:97-120,81,82,Judges 7:19-8:12,Acts 3:12-26,John 1:29-4
 Thursday,3,Proper 12,83,145,85,86,Judges 8:22-35,Acts 4:1-12,John 1:43-51
 Friday,3,Proper 12,88,91,92,Judges 9:1-16,19-21,Acts 4:13-31,John 2:1-12
 Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
-`;
+    `;
 
-const readings = csvData.trim().split('\n').slice(1).map(row => {
-    const [day, week, proper, psalm1, psalm2, oldTestament, newTestament, gospel] = row.split(',');
-    return { day, week, proper, psalm1, psalm2, oldTestament, newTestament, gospel };
+    const parseCSV = (csv) => {
+        const lines = csv.trim().split('\n');
+        const headers = lines[0].split(',');
+        const data = lines.slice(1).map(line => {
+            const values = line.split(',');
+            return headers.reduce((object, header, index) => {
+                object[header] = values[index];
+                return object;
+            }, {});
+        });
+        return data;
+    };
+
+    const readings = parseCSV(csvData);
+
+    const getCurrentReading = (readings) => {
+        const currentDate = new Date();
+        const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+        const currentWeek = Math.ceil((currentDate.getDate() - currentDate.getDay() + 1) / 7);
+        return readings.find(reading => reading.Day === currentDay && reading.Week == currentWeek);
+    };
+
+    const fetchBibleText = async (reference) => {
+        const [book, chapterVerses] = reference.split(' ');
+        const [chapter, verses] = chapterVerses.split(':');
+        const url = `path/to/bible/${book}/${chapter}.html`; // Update this path according to the repository structure
+
+        const response = await fetch(url);
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const verseElements = verses.split(',').map(verse => doc.querySelector(`#${verse}`));
+        return verseElements.map(el => el ? el.innerText : '').join('<br>');
+    };
+
+    const displayReading = async (reading) => {
+        if (reading) {
+            document.getElementById('reading-title').innerHTML = `<strong>${reading.Proper}</strong>`;
+            const psalm1 = await fetchBibleText(reading.Psalms1);
+            const psalm2 = await fetchBibleText(reading.Psalms2);
+            const oldTestament = await fetchBibleText(reading.OldTestament);
+            const newTestament = await fetchBibleText(reading.NewTestament);
+            const gospel = await fetchBibleText(reading.Gospel);
+
+            document.getElementById('reading-content').innerHTML = `
+                <p><strong>Psalms:</strong><br>${psalm1}<br>${psalm2}</p>
+                <p><strong>Old Testament:</strong><br>${oldTestament}</p>
+                <p><strong>New Testament:</strong><br>${newTestament}</p>
+                <p><strong>Gospel:</strong><br>${gospel}</p>
+            `;
+        } else {
+            document.getElementById('reading-content').innerHTML = `<p>No reading available for today.</p>`;
+        }
+    };
+
+    const currentReading = getCurrentReading(readings);
+    displayReading(currentReading);
 });
-
-function getTodaysReading() {
-    const today = new Date().toLocaleString('en-US', { weekday: 'long' });
-    return readings.filter(reading => reading.day === today);
-}
-
-function displayReading() {
-    const todayReading = getTodaysReading();
-    if (todayReading.length > 0) {
-        const reading = todayReading[0];
-        document.getElementById('reading-title').innerText = `Proper ${reading.proper}`;
-        document.getElementById('reading-content').innerHTML = `
-            <p>Psalms: ${reading.psalm1}, ${reading.psalm2}</p>
-            <p>Old Testament: ${reading.oldTestament}</p>
-            <p>New Testament: ${reading.newTestament}</p>
-            <p>Gospel: ${reading.gospel}</p>
-        `;
-    } else {
-        document.getElementById('reading-title').innerText = 'No Reading Available';
-        document.getElementById('reading-content').innerHTML = '';
-    }
-}
-
-document.addEventListener('DOMContentLoaded', displayReading);
