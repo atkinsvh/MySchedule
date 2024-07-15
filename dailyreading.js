@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         
         // Example: Replace with actual dynamic reading logic
         const readings = [
-            { book: 'JHN', chapter: 3, verseStart: 16, verseEnd: 17 },  // John 3:16-17
-            { book: 'GEN', chapter: 1, verseStart: 1, verseEnd: 2 }    // Genesis 1:1-2
+            { book: 'JHN', chapter: 3, verseStart: 16, verseEnd: 17 }  // John 3:16-17
         ];
         
         readingTitleElement.innerText = 'Today\'s Bible Reading';
