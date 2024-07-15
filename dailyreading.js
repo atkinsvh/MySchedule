@@ -19,15 +19,16 @@ document.addEventListener("DOMContentLoaded", async function() {
     try {
         const readingTitleElement = document.getElementById('reading-title');
         const readingContentElement = document.getElementById('reading-content');
-        
-        // Example: Replace with actual dynamic reading logic
-        const readings = [
-            { book: 'JHN', chapter: 3, verseStart: 16, verseEnd: 17 }  // John 3:16-17
+
+        // Update this to dynamically determine the readings for today
+        const todayReadings = [
+            { book: 'JHN', chapter: 3, verseStart: 16, verseEnd: 17 },  // Example reading: John 3:16-17
+            { book: 'PSA', chapter: 23, verseStart: 1, verseEnd: 6 }    // Example reading: Psalm 23:1-6
         ];
         
         readingTitleElement.innerText = 'Today\'s Bible Reading';
 
-        for (const reading of readings) {
+        for (const reading of todayReadings) {
             const text = await fetchBibleText(reading.book, reading.chapter, reading.verseStart, reading.verseEnd);
             readingContentElement.innerHTML += `<p>${text}</p>`;
         }
