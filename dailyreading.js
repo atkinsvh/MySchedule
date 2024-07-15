@@ -1,39 +1,51 @@
-const API_KEY = '5c17c282e31380ffe54e77903f0d0880';  // Replace with your actual API key
-
-async function fetchBibleText(book, chapter, verseStart, verseEnd) {
-    const response = await fetch(`https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/${book}.${chapter}.${verseStart}-${verseEnd}?include-chapter-numbers=false&include-verse-numbers=false`, {
-        headers: {
-            'api-key': API_KEY
-        }
-    });
-
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-    return data.data.content;
+function loadBibleReading(fileName) {
+    fetch(`kjv-bible-in-html5-master/${fileName}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("reading-content").innerHTML += data;
+        })
+        .catch(error => console.error('Error loading the Bible reading:', error));
 }
 
-document.addEventListener("DOMContentLoaded", async function() {
-    try {
-        const readingTitleElement = document.getElementById('reading-title');
-        const readingContentElement = document.getElementById('reading-content');
+document.addEventListener("DOMContentLoaded", function() {
+    const readingTitleElement = document.getElementById('reading-title');
+    const dailyReadingFileMap = {
+        'Joshua 1:1-18': 'Joshua.html',
+        'Acts 21:3-15': 'Acts.html',
+        'Mark 1:21-27': 'Mark.html',
+        // Add mappings for other readings as necessary
+    };
 
-        // Update this to dynamically determine the readings for today
-        const todayReadings = [
-            { book: 'JHN', chapter: 3, verseStart: 16, verseEnd: 17 },  // Example reading: John 3:16-17
-            { book: 'PSA', chapter: 23, verseStart: 1, verseEnd: 6 }    // Example reading: Psalm 23:1-6
-        ];
-        
-        readingTitleElement.innerText = 'Today\'s Bible Reading';
+    const psalmsFiles = [
+        'Psalms.html',
+        // Add paths for all Psalm files here
+    ];
 
-        for (const reading of todayReadings) {
-            const text = await fetchBibleText(reading.book, reading.chapter, reading.verseStart, reading.verseEnd);
-            readingContentElement.innerHTML += `<p>${text}</p>`;
+    function getReadingFileNames(readingContent) {
+        const readings = readingContent.match(/Psalms: (.+), (.+)\nOld Testament: (.+)\nNew Testament: (.+)\nGospel: (.+)/);
+        if (readings) {
+            const [_, psalm1, psalm2, oldTestament, newTestament, gospel] = readings;
+            return [psalm1, psalm2, oldTestament, newTestament, gospel];
         }
-    } catch (error) {
-        console.error('Error fetching the Bible reading:', error);
-        document.getElementById('reading-content').innerText = 'Failed to load Bible reading.';
+        return [];
     }
+
+    // Load the Bible content after the readings are displayed
+    displayReading();
+    setTimeout(() => {
+        const readingContent = document.getElementById('reading-content').innerText;
+        const [psalm1, psalm2, oldTestament, newTestament, gospel] = getReadingFileNames(readingContent);
+
+        [psalm1, psalm2].forEach(psalm => {
+            if (psalmsFiles.includes(`${psalm}.html`)) {
+                loadBibleReading(`${psalm}.html`);
+            }
+        });
+
+        [oldTestament, newTestament, gospel].forEach(reading => {
+            if (dailyReadingFileMap[reading]) {
+                loadBibleReading(dailyReadingFileMap[reading]);
+            }
+        });
+    }, 500);
 });
