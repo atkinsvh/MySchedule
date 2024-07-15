@@ -37,7 +37,7 @@ function displayReading() {
     const todayReading = getTodaysReading();
     if (todayReading.length > 0) {
         const reading = todayReading[0];
-        document.getElementById('reading-title').innerText = `Proper ${reading.proper}`;
+        document.getElementById('reading-title').innerText = `${reading.proper}`;
         document.getElementById('reading-content').innerHTML = `
             <p>Psalms: ${reading.psalm1}, ${reading.psalm2}</p>
             <p>Old Testament: ${reading.oldTestament}</p>
