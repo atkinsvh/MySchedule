@@ -42,8 +42,7 @@ Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
     const getCurrentReading = (readings) => {
         const currentDate = new Date();
         const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
-        const currentProperWeek = 1; // Proper 10 week starting today
-        return readings.find(reading => reading.Day === currentDay && reading.Week == currentProperWeek);
+        return readings.find(reading => reading.Day === currentDay);
     };
 
     const fetchBibleText = async (reference) => {
