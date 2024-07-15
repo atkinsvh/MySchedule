@@ -49,13 +49,13 @@ Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
     const fetchBibleText = async (reference) => {
         const [book, chapterVerses] = reference.split(' ');
         const [chapter, verses] = chapterVerses.split(':');
-        const url = `./kjv-bible-in-html5/${book.toLowerCase()}.html`; // Update this path according to the repository structure
+        const url = `./kjv-bible-in-html5/${book}.html`;
 
         const response = await fetch(url);
         const text = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
-        const verseElements = verses.split(',').map(verse => doc.querySelector(`#${verse}`));
+        const verseElements = verses.split(',').map(verse => doc.querySelector(`#v${verse}`));
         return verseElements.map(el => el ? el.innerText : '').join('<br>');
     };
 
