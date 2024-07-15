@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Schedule Website</title>
+    <title>Daily Readings</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="schedule.js"></script>
-    <script defer src="quotes.js"></script>
-    <script defer src="saluation.js"></script>
     <script defer src="readings.js"></script>
 </head>
 <body>
@@ -19,36 +16,20 @@
         <div class="row">
             <section id="weather" class="purple-box">
                 <h2>Weather</h2>
-                <div class="notification"></div>
-                <div class="weather-container">
-                    <div class="weather-icon">
-                        <img src="icons/unknown.png" alt="">
-                    </div>
-                    <div class="temperature-value">
-                        <p>- °<span>C</span></p>
-                    </div>
-                    <div class="temperature-description">
-                        <p> - </p>
-                    </div>
-                    <div class="location">
-                        <p>-</p>
-                    </div>
-                </div>
+                <!-- Weather content here -->
             </section>
             <section id="schedule" class="green-box">
                 <h2>Schedule</h2>
-                <div id="dailySchedule"></div>
+                <!-- Schedule content here -->
             </section>
             <section id="google-calendar" class="orange-box">
                 <h2>Google Calendar</h2>
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&src=MzdiZTY4YmQzOGJlYTg2OTU2NDZlNjhkNWM5M2JhMjZiMDYzY2ZjZWM1YzI5MGJjOTE4MzUyOTI2M2ZjY2QwMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23D50000&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                <!-- Google Calendar content here -->
             </section>
-            <section id="daily-reading" class="blue-box">
+            <section id="daily-reading" class="blue-box" style="background: linear-gradient(to right, red, white, blue);">
                 <h2>Daily Reading</h2>
-                <div id="reading-title"><strong>Loading...</strong></div>
-                <div id="reading-content">
-                    <p>Loading...</p>
-                </div>
+                <div id="reading-title"><strong></strong></div>
+                <div id="reading-content"></div>
             </section>
         </div>
     </main>
