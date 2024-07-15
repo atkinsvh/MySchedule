@@ -9,5 +9,5 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Example: Load a specific Bible reading on page load
-  loadBibleReading('kjv-bible-in-html5-multipage/1Corinthians.html');
+  loadBibleReading('kjv-bible-in-html5-master/1Corinthians.html');
 });
