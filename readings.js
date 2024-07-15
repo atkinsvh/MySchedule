@@ -42,7 +42,7 @@ Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
     const getCurrentReading = (readings) => {
         const currentDate = new Date();
         const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
-        const currentWeek = Math.ceil((currentDate.getDate() - currentDate.getDay() + 1) / 7);
+        const currentWeek = 1; // Starting with Proper 10
         return readings.find(reading => reading.Day === currentDay && reading.Week == currentWeek);
     };
 
