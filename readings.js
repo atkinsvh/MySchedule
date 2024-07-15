@@ -1,7 +1,5 @@
-// readings.js
-
 const csvData = `
-Day,Week,Proper,Psalms 1,Psalms 2,Old Testament,New Testament,Gospel
+Day,Week,Proper,Psalms1,Psalms2,Old Testament,New Testament,Gospel
 Sunday,1,Proper 10,148,149,150,114,115,Joshua 1:1-18,Acts 21:3-15,Mark 1:21-27
 Monday,1,Proper 10,25,9,15,Joshua 2:1-14,Romans 11:1-12,Matthew 25:1-13
 Tuesday,1,Proper 10,26,28,36,39,Joshua 2:15-24,Romans 11:13-24,Matthew 25:14-30
