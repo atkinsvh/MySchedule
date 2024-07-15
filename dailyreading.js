@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     const psalmsFiles = [
-        'kjv-bible-in-html5-multipage/Psalms.html',
+        'kjv-bible-in-html5-master/Psalms.html',
         // Add paths for all Psalm files here
     ];
 
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const [_, psalm1, psalm2, oldTestament, newTestament, gospel] = readings;
 
             [psalm1, psalm2].forEach(psalm => {
-                if (psalmsFiles.includes(`kjv-bible-in-html5-multipage/${psalm}.html`)) {
-                    loadBibleReading(`kjv-bible-in-html5-multipage/${psalm}.html`);
+                if (psalmsFiles.includes(`kjv-bible-in-html5-master/${psalm}.html`)) {
+                    loadBibleReading(`kjv-bible-in-html5-master/${psalm}.html`);
                 }
             });
 
