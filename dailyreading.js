@@ -10,9 +10,9 @@ function loadBibleReading(fileName) {
 document.addEventListener("DOMContentLoaded", function() {
     const readingTitleElement = document.getElementById('reading-title');
     const dailyReadingFileMap = {
-        'Joshua 1:1-18': 'kjv-bible-in-html5-multipage/Joshua.html',
-        'Acts 21:3-15': 'kjv-bible-in-html5-multipage/Acts.html',
-        'Mark 1:21-27': 'kjv-bible-in-html5-multipage/Mark.html',
+        'Joshua 1:1-18': 'kjv-bible-in-html5-master/Joshua.html',
+        'Acts 21:3-15': 'kjv-bible-in-html5-master/Acts.html',
+        'Mark 1:21-27': 'kjv-bible-in-html5-master/Mark.html',
         // Add mappings for other readings as necessary
     };
 
