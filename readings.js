@@ -24,8 +24,19 @@ Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
 `;
 
 const readings = csvData.trim().split('\n').slice(1).map(row => {
-    const [day, week, proper, psalm1, psalm2, psalm3, psalm4, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd] = row.split(',');
-    return { day, week, proper, psalm1, psalm2, psalm3, psalm4, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd };
+    const [
+        day, week, proper, psalm1, psalm2, psalm3, psalm4,
+        oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd,
+        newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd,
+        gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd
+    ] = row.split(',');
+
+    return {
+        day, week, proper, psalm1, psalm2, psalm3, psalm4,
+        oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd,
+        newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd,
+        gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd
+    };
 });
 
 function getTodaysReading() {
@@ -38,7 +49,7 @@ function displayReading() {
     if (todayReading.length > 0) {
         const reading = todayReading[0];
         let psalms = [reading.psalm1, reading.psalm2, reading.psalm3, reading.psalm4].filter(psalm => psalm).join('<br>');
-        document.getElementById('reading-title').innerText = `${reading.proper}`;
+        document.getElementById('reading-title').innerText = `Daily Reading<br>${reading.proper}`;
         document.getElementById('reading-content').innerHTML = `
             <p>Psalms:<br>${psalms}</p>
             <p>${reading.oldTestamentBook} ${reading.oldTestamentChapter}:${reading.oldTestamentVerseStart}-${reading.oldTestamentVerseEnd}</p>
