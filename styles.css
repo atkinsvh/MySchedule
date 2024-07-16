@@ -82,6 +82,10 @@ section h2 {
     padding: 1rem;
 }
 
+p{
+    font-size: 2rem;
+}
+    
 .weather-container, .weather-icon, .temperature-value, .temperature-description, .location, #dailySchedule, iframe {
     width: 100%;
     display: flex;
