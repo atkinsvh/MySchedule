@@ -117,4 +117,32 @@ section h2 {
     iframe {
         width: 100%;
     }
+
+/* Style for the TOC */
+    .toc-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .toc-item {
+        width: 23%; /* Adjust to ensure 4 items per row with some space between */
+        margin: 0.5%;
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+    
+    .toc-item a {
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .toc-item a:hover {
+        text-decoration: underline;
+    }
+
 }
