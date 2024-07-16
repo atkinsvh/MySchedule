@@ -150,7 +150,7 @@ section h2 {
 
 
     #daily-reading {
-    background: url('woodtexture.jpeg') no-repeat center center;
+    background: url('https://github.com/atkinsvh/MySchedule/blob/cd2701b5756ba2aabd0195f3ba8248e46344f131/woodtexture.jpeg') no-repeat center center;
     background-size: cover;
     color: white; /* Ensure the text is readable against the background */
     padding: 20px;
