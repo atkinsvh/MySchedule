@@ -150,13 +150,13 @@ section h2 {
 
 
     #daily-reading {
-    background: url('woodtexture.jpeg') no-repeat center center;
-    background-size: cover;
-    color: white; /* Ensure the text is readable against the background */
-    padding: 20px;
-    border-radius: 10px;
-}
-
+        background: url('https://github.com/atkinsvh/MySchedule/blob/9d9bdfd4dbb80fb2d8f77e6f2a4fd4ef4e91ae46/woodtexture.jpeg') no-repeat center center;
+        background-size: cover;
+        color: white; /* Ensure the text is readable against the background */
+        padding: 20px;
+        border-radius: 10px;
+    }
+    
     #reading-title {
         font-size: 24px;
         font-weight: bold;
