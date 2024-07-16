@@ -61,5 +61,3 @@ function displayReading() {
         document.getElementById('reading-content').innerHTML = '';
     }
 }
-
-document.addEventListener('DOMContentLoaded', displayReading);
