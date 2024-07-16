@@ -154,7 +154,7 @@ p{
 
 
     #daily-reading {
-        background: url('https://github.com/atkinsvh/MySchedule/blob/6df621ee8817de956ad7cc915db917ec901fc886/woodtexture.jpg') no-repeat center center;
+        background: url('woodtexture.jpg') no-repeat center center;
         background-size: cover;
         color: white; /* Ensure the text is readable against the background */
         padding: 20px;
