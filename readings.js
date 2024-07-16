@@ -49,7 +49,7 @@ function displayReading() {
     if (todayReading.length > 0) {
         const reading = todayReading[0];
         let psalms = [reading.psalm1, reading.psalm2, reading.psalm3, reading.psalm4].filter(psalm => psalm).join('<br>');
-        document.getElementById('reading-title').innerText = `Daily Reading<br>${reading.proper}`;
+        document.getElementById('reading-title').innerText = `${reading.proper}`;
         document.getElementById('reading-content').innerHTML = `
             <p>Psalms:<br>${psalms}</p>
             <p>${reading.oldTestamentBook} ${reading.oldTestamentChapter}:${reading.oldTestamentVerseStart}-${reading.oldTestamentVerseEnd}</p>
