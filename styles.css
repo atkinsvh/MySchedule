@@ -123,7 +123,10 @@ section h2 {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        overflow-y: auto; /* Allows vertical scrolling if content exceeds container height */
+        max-height: 80vh; /* Adjust as necessary */
     }
+
     
     .toc-item {
         width: 23%; /* Adjust to ensure 4 items per row with some space between */
