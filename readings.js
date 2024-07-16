@@ -23,72 +23,10 @@ Friday,3,Proper 12,88,91,92,Judges 9:1-16,19-21,Acts 4:13-31,John 2:1-12
 Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
 `;
 
-const books = {
-    'Joshua': 'Joshua',
-    'Judges': 'Judges',
-    '1 Samuel': '1 Samuel',
-    '2 Samuel': '2 Samuel',
-    '1 Kings': '1 Kings',
-    '2 Kings': '2 Kings',
-    '1 Chronicles': '1 Chronicles',
-    '2 Chronicles': '2 Chronicles',
-    'Ezra': 'Ezra',
-    'Nehemiah': 'Nehemiah',
-    'Esther': 'Esther',
-    'Job': 'Job',
-    'Psalms': 'Psalms',
-    'Proverbs': 'Proverbs',
-    'Ecclesiastes': 'Ecclesiastes',
-    'Song of Solomon': 'Song of Solomon',
-    'Isaiah': 'Isaiah',
-    'Jeremiah': 'Jeremiah',
-    'Lamentations': 'Lamentations',
-    'Ezekiel': 'Ezekiel',
-    'Daniel': 'Daniel',
-    'Hosea': 'Hosea',
-    'Joel': 'Joel',
-    'Amos': 'Amos',
-    'Obadiah': 'Obadiah',
-    'Jonah': 'Jonah',
-    'Micah': 'Micah',
-    'Nahum': 'Nahum',
-    'Habakkuk': 'Habakkuk',
-    'Zephaniah': 'Zephaniah',
-    'Haggai': 'Haggai',
-    'Zechariah': 'Zechariah',
-    'Malachi': 'Malachi',
-    'Matthew': 'Matthew',
-    'Mark': 'Mark',
-    'Luke': 'Luke',
-    'John': 'John',
-    'Acts': 'Acts',
-    'Romans': 'Romans',
-    '1 Corinthians': '1 Corinthians',
-    '2 Corinthians': '2 Corinthians',
-    'Galatians': 'Galatians',
-    'Ephesians': 'Ephesians',
-    'Philippians': 'Philippians',
-    'Colossians': 'Colossians',
-    '1 Thessalonians': '1 Thessalonians',
-    '2 Thessalonians': '2 Thessalonians',
-    '1 Timothy': '1 Timothy',
-    '2 Timothy': '2 Timothy',
-    'Titus': 'Titus',
-    'Philemon': 'Philemon',
-    'Hebrews': 'Hebrews',
-    'James': 'James',
-    '1 Peter': '1 Peter',
-    '2 Peter': '2 Peter',
-    '1 John': '1 John',
-    '2 John': '2 John',
-    '3 John': '3 John',
-    'Jude': 'Jude',
-    'Revelation': 'Revelation'
-};
 
 const readings = csvData.trim().split('\n').slice(1).map(row => {
-    const [day, week, proper, psalm1, psalm2, oldTestament, newTestament, gospel] = row.split(',');
-    return { day, week, proper, psalm1, psalm2, oldTestament, newTestament, gospel };
+    const [day, week, proper, psalm1, psalm2, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd] = row.split(',');
+    return { day, week, proper, psalm1, psalm2, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd };
 });
 
 function getTodaysReading() {
@@ -100,20 +38,20 @@ function displayReading() {
     const todayReading = getTodaysReading();
     if (todayReading.length > 0) {
         const reading = todayReading[0];
-        const oldTestamentBook = reading.oldTestament.split(' ')[0];
-        const newTestamentBook = reading.newTestament.split(' ')[0];
-
         document.getElementById('reading-title').innerText = `Proper ${reading.proper}`;
         document.getElementById('reading-content').innerHTML = `
             <p>Psalms: ${reading.psalm1}, ${reading.psalm2}</p>
-            <p>Old Testament: ${books[oldTestamentBook]} ${reading.oldTestament.split(' ').slice(1).join(' ')}</p>
-            <p>New Testament: ${books[newTestamentBook]} ${reading.newTestament.split(' ').slice(1).join(' ')}</p>
-            <p>Gospel: ${reading.gospel}</p>
+            <p>Old Testament: ${reading.oldTestamentBook} ${reading.oldTestamentChapter}:${reading.oldTestamentVerseStart}-${reading.oldTestamentVerseEnd}</p>
+            <p>New Testament: ${reading.newTestamentBook} ${reading.newTestamentChapter}:${reading.newTestamentVerseStart}-${reading.newTestamentVerseEnd}</p>
+            <p>Gospel: ${reading.gospelBook} ${reading.gospelChapter}:${reading.gospelVerseStart}-${reading.gospelVerseEnd}</p>
         `;
     } else {
         document.getElementById('reading-title').innerText = 'No Reading Available';
         document.getElementById('reading-content').innerHTML = '';
     }
 }
+
+document.addEventListener('DOMContentLoaded', displayReading);
+
 
 document.addEventListener('DOMContentLoaded', displayReading);
