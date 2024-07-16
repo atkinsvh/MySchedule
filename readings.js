@@ -37,10 +37,10 @@ function displayReading() {
     const todayReading = getTodaysReading();
     if (todayReading.length > 0) {
         const reading = todayReading[0];
-        let psalms = [reading.psalm1, reading.psalm2, reading.psalm3, reading.psalm4].filter(psalm => psalm).join(', ');
-        document.getElementById('reading-title').innerText = `Proper ${reading.proper}`;
+        let psalms = [reading.psalm1, reading.psalm2, reading.psalm3, reading.psalm4].filter(psalm => psalm).join('<br>');
+        document.getElementById('reading-title').innerText = `${reading.proper}`;
         document.getElementById('reading-content').innerHTML = `
-            <p>Psalms: ${psalms.split(', ').join('<br>')}</p>
+            <p>Psalms:<br>${psalms}</p>
             <p>${reading.oldTestamentBook} ${reading.oldTestamentChapter}:${reading.oldTestamentVerseStart}-${reading.oldTestamentVerseEnd}</p>
             <p>${reading.newTestamentBook} ${reading.newTestamentChapter}:${reading.newTestamentVerseStart}-${reading.newTestamentVerseEnd}</p>
             <p>${reading.gospelBook} ${reading.gospelChapter}:${reading.gospelVerseStart}-${reading.gospelVerseEnd}</p>
@@ -51,4 +51,5 @@ function displayReading() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', displayReading);
 document.addEventListener('DOMContentLoaded', displayReading);
