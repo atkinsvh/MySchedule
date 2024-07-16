@@ -25,8 +25,8 @@ Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
 
 
 const readings = csvData.trim().split('\n').slice(1).map(row => {
-    const [day, week, proper, psalm1, psalm2, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd] = row.split(',');
-    return { day, week, proper, psalm1, psalm2, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd };
+    const [day, week, proper, psalm1, psalm2, psalm3, psalm4, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd] = row.split(',');
+    return { day, week, proper, psalm1, psalm2, psalm3, psalm4, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd };
 });
 
 function getTodaysReading() {
@@ -38,12 +38,13 @@ function displayReading() {
     const todayReading = getTodaysReading();
     if (todayReading.length > 0) {
         const reading = todayReading[0];
+        let psalms = [reading.psalm1, reading.psalm2, reading.psalm3, reading.psalm4].filter(psalm => psalm).join(', ');
         document.getElementById('reading-title').innerText = `Proper ${reading.proper}`;
         document.getElementById('reading-content').innerHTML = `
-            <p>Psalms: ${reading.psalm1}, ${reading.psalm2}</p>
-            <p>Old Testament: ${reading.oldTestamentBook} ${reading.oldTestamentChapter}:${reading.oldTestamentVerseStart}-${reading.oldTestamentVerseEnd}</p>
-            <p>New Testament: ${reading.newTestamentBook} ${reading.newTestamentChapter}:${reading.newTestamentVerseStart}-${reading.newTestamentVerseEnd}</p>
-            <p>Gospel: ${reading.gospelBook} ${reading.gospelChapter}:${reading.gospelVerseStart}-${reading.gospelVerseEnd}</p>
+            <p>Psalms: ${psalms.split(', ').join('<br>')}</p>
+            <p>${reading.oldTestamentBook} ${reading.oldTestamentChapter}:${reading.oldTestamentVerseStart}-${reading.oldTestamentVerseEnd}</p>
+            <p>${reading.newTestamentBook} ${reading.newTestamentChapter}:${reading.newTestamentVerseStart}-${reading.newTestamentVerseEnd}</p>
+            <p>${reading.gospelBook} ${reading.gospelChapter}:${reading.gospelVerseStart}-${reading.gospelVerseEnd}</p>
         `;
     } else {
         document.getElementById('reading-title').innerText = 'No Reading Available';
