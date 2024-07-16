@@ -23,7 +23,6 @@ Friday,3,Proper 12,88,91,92,Judges 9:1-16,19-21,Acts 4:13-31,John 2:1-12
 Saturday,3,Proper 12,87,90,136,Judges 9:22-25,50-57,Acts 4:32-5:11,John 2:13-25
 `;
 
-
 const readings = csvData.trim().split('\n').slice(1).map(row => {
     const [day, week, proper, psalm1, psalm2, psalm3, psalm4, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd] = row.split(',');
     return { day, week, proper, psalm1, psalm2, psalm3, psalm4, oldTestamentBook, oldTestamentChapter, oldTestamentVerseStart, oldTestamentVerseEnd, newTestamentBook, newTestamentChapter, newTestamentVerseStart, newTestamentVerseEnd, gospelBook, gospelChapter, gospelVerseStart, gospelVerseEnd };
@@ -51,8 +50,5 @@ function displayReading() {
         document.getElementById('reading-content').innerHTML = '';
     }
 }
-
-document.addEventListener('DOMContentLoaded', displayReading);
-
 
 document.addEventListener('DOMContentLoaded', displayReading);
