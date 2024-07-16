@@ -52,4 +52,3 @@ function displayReading() {
 }
 
 document.addEventListener('DOMContentLoaded', displayReading);
-document.addEventListener('DOMContentLoaded', displayReading);
