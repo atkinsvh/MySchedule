@@ -78,7 +78,6 @@ section {
 
 .green-box {
     background-color: rgba(0, 128, 0, 0.5);
-    font-size: 2rem; /* Same text size for all labels */
 }
 
 .orange-box {
@@ -131,16 +130,20 @@ section h2 {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
 }
 .green {
     background-color: #e0ffe0;
     border: 1px solid #00cc00;
+    color: #333; /* Dark text for readability */
 }
 .purple {
     background-color: #f0e0ff;
     border: 1px solid #800080;
+    color: #333; /* Dark text for readability */
 }
 .gray {
     background-color: #f0f0f0;
     border: 1px solid #888888;
+    color: #333; /* Dark text for readability */
 }
