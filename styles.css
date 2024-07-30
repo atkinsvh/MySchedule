@@ -147,9 +147,24 @@ section h2 {
     border: 1px solid #888888;
     color: #333; /* Dark text for readability */
 }
-.box {
-            flex: 1 1 calc(33.333% - 20px);
-            border: 1px solid #000;
-            padding: 10px;
-            box-sizing: border-box;
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
+.box {
+    flex: 1 1 calc(33.333% - 20px);
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .box {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+@media (max-width: 480px) {
+    .box {
+        flex: 1 1 100%;
+    }
+
