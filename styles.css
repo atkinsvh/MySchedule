@@ -49,6 +49,14 @@ main {
     align-items: center;
 }
 
+.row1 {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 section {
     padding: 1rem;
     color: white;
@@ -118,11 +126,12 @@ section h2 {
         width: 100%;
     }
 }
+
 .section {
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 5px;
-        }
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
 .green {
     background-color: #e0ffe0;
     border: 1px solid #00cc00;
