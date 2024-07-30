@@ -118,3 +118,20 @@ section h2 {
         width: 100%;
     }
 }
+.section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+.green {
+    background-color: #e0ffe0;
+    border: 1px solid #00cc00;
+}
+.purple {
+    background-color: #f0e0ff;
+    border: 1px solid #800080;
+}
+.gray {
+    background-color: #f0f0f0;
+    border: 1px solid #888888;
+}
