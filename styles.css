@@ -111,7 +111,7 @@ section h2, section h3 {
 }
 
 .temperature-description p, .location p {
-    font-size: 1.2em;
+    font-size: 3.2rem;
 }
 
 @media screen and (max-width: 768px) {
