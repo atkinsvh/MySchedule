@@ -1,5 +1,6 @@
 * {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 2rem;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
 }
 li {
     color: white;
-    font-size: 2rem;
     text-align:center;
 }
 
