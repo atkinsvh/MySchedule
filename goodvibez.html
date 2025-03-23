@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Vibez . HTML</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      color: white;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .vortex {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      animation: swirl 20s linear infinite;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .verse {
+      position: absolute;
+      max-width: 300px;
+      font-size: 1.2em;
+      padding: 1em;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .verse.active {
+      opacity: 1;
+    }
+
+    @keyframes swirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      font-size: 1.5em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="vortex">
+    <div class="verse active">"I can do all things through Christ who strengthens me." – Philippians 4:13</div>
+    <div class="verse">"The Lord is my shepherd; I shall not want." – Psalm 23:1</div>
+    <div class="verse">"For I know the plans I have for you..." – Jeremiah 29:11</div>
+    <div class="verse">"Be strong and courageous..." – Joshua 1:9</div>
+    <div class="verse">"Let all that you do be done in love." – 1 Corinthians 16:14</div>
+  </div>
+  <h1>There is always good news</h1>
+
+  <script>
+    const verses = document.querySelectorAll('.verse');
+    let index = 0;
+
+    setInterval(() => {
+      verses[index].classList.remove('active');
+      index = (index + 1) % verses.length;
+      verses[index].classList.add('active');
+    }, 5000);
+  </script>
+
+</body>
+</html>
